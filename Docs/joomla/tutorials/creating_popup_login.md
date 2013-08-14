@@ -32,11 +32,11 @@ class GantryFeatureLogin extends GantryFeature {
         <div class="rt-block">
             <div class="rt-popupmodule-button">
             <?php if ($user->guest) : ?>
-                <a href="#" class="buttontext button" rel="rokbox[355 385][module=rt-popuplogin]">
+                <a href="#" class="buttontext button" data-rokbox data-rokbox-element="#rt-popuplogin">
                     <span class="desc"><?php echo $this->get('text'); ?></span>
                 </a>
             <?php else : ?>
-                <a href="#" class="buttontext button" rel="rokbox[355 385][module=rt-popuplogin]">
+                <a href="#" class="buttontext button" data-rokbox data-rokbox-element="#rt-popuplogin">
                     <span class="desc"><?php echo $this->get('logouttext'); ?> <?php echo JText::sprintf($user->get('username')); ?></span>
                 </a>
             <?php endif; ?>
@@ -50,19 +50,17 @@ class GantryFeatureLogin extends GantryFeature {
 
 Essentially, when this feature is enabled and assigned, it will render the appropriate HTML necessary for the link/button styling and structure, as well as the RokBox link syntax that will trigger the popup effect.
 
-While this code consists mostly of a standard set of divs to provide styling potential, there are some key RokBox syntax items as well as the reference for some dynamic text. Here's a breakdown:
+While this code consists mostly of a standard set of divs to provide styling potential, there are some key RokBox2 syntax items as well as the reference for some dynamic text. Here's a breakdown:
 
 
 RokBox Syntax
 -------------
 
 ~~~ .html
-<a href="#" class="buttontext button" rel="rokbox[355 385][module=rt-popuplogin]">
+<a href="#" class="buttontext button" data-rokbox data-rokbox-element="#rt-popuplogin">
 ~~~
 
-The actual link makes use of the RokBox link syntax for calling a module into the popup. Using the `rel=` tag we are declaring the size (width height) of our intended popup. ex: `rokbox[355 385]`. You can adjust these width and height values to match the content you plan to have in your popup.
-
-Immediately following width and height declaration, we are referencing the module's surrounding div which tells RokBox which item needs to be placed into the popup. This surrounding div (rt-popuplogin in our example) will be placed in a layout later on in the tutorial.
+The actual link makes use of the RokBox link syntax for calling a module into the popup. Using the `data-rokbox-element=` tag we are referencing the module's surrounding div which tells RokBox which item needs to be placed into the popup. This surrounding div (rt-popuplogin in our example) will be placed in a layout later on in the tutorial.
 
 
 Link/Button Text
